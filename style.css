@@ -2,8 +2,8 @@
 
 body {
     font-family: 'Roboto Slab', serif;
-    background-color: #f8f8f8;
-    color: #304040;
+    background-color: #ECEFF1;
+    color: #263238;
 }
 
 #content {
@@ -22,25 +22,25 @@ body {
 }
 
 #domain {
-    color: #2980b9;
+    color: #2196F3;
     font-weight: 400;
 }
 
 #content section {
     text-align: justify;
-    padding-top: 1.25em;
+    padding-top: 2em;
 }
 
 #content section h1 {
-    color: #2980b9;
+    color: #2196F3;
     border-bottom: #d0d0d0 dashed thin;
-    background-color: #fefefe;
+    background-color: #fdfdfd;
     margin: 0;
     padding: 4px;
 }
 
 #content a {
-    color: #2980b9;
+    color: #2196F3;
     text-decoration: none;
 }
 
