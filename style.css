@@ -63,6 +63,12 @@ body {
     margin-bottom: -1em;
 }
 
+#projectList {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 0;
+}
+
 #projectList a {
     font-weight: 700;
 }
