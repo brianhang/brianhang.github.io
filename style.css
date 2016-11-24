@@ -58,3 +58,17 @@ body {
     color: #b0b0b0;
     text-align: center;
 }
+
+#projects {
+    margin-bottom: -1em;
+}
+
+#projectList a {
+    font-weight: 700;
+}
+
+#projectList p {
+    margin: 0em;
+    margin-bottom: 1em;
+    font-size: 0.8em;
+}
