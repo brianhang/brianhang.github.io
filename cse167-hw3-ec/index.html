@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>3D Modeling System</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="content">
+        <h1>3D Modeling System</h1>
+        <section id="requirements">
+            <h2>Requirements</h2>
+            <ul>
+                <li>Visual Studio 2017</li>
+                <li>C++11 Compiler</li>
+            </ul>
+        </section>
+
+        <section id="usage">
+            <h2>Usage</h2>
+            <p>
+                First, open the project and compile with Visual Studio. Once the
+                program is running, two windows will open. The first window is
+                the original window from HW3. The second window is the <em>render window</em>,
+                which shows the 3D model. Note that is has a blue background for distinction.
+            </p>
+            <figure></figure>
+            <p>
+                The two windows have separate controls.
+                The curve editor window mostly has the same keyboard controls.
+                There is one new keyboard control: pressing <kbd>R</kbd> key will take
+                the current curve and render it as a 3D model in the render window.
+            </p>
+            <figure></figure>
+            <p>
+                The first time you do this, you will notice that the model appears to be dark. This is because the
+                scene by default has no lights. Focus on the render window by clicking on it. Lights can be added by pressing the
+                <kbd>L</kbd> key. A light will be added to where the camera currently is.
+            </p>
+            <figure></figure>
+            <p>
+                The camera can be moved around the object by pressing and holding the <img src="assets/images/mouse-left-click.png" class="mouse-btn" /> left mouse button. Moving the mouse will then rotate
+                the camera around the object. The camera can be zoomed in and out by pressing and holding the <img src="assets/images/mouse-right-click.png" class="mouse-btn" /> right mouse button.
+                Moving the mouse up will zoom in, and moving the mouse down will zoom out.
+            </p>
+            <figure></figure>
+            <p>
+                To reset the camera view, press the <kbd>R</kbd> key in the render window.
+            </p>
+            <p>
+                To close the program, press the <kbd>Q</kbd> key from either window.
+            </p>
+        </section>
+
+        <section id="examples">
+            <h2>Examples</h2>
+        </section>
+
+        <section id="implementation">
+            <h2>Implementation</h2>
+            <p>
+            First, I used glut to create a second window in <code>main.cpp</code>. So now, when the program opened, a second window would open.
+            Then, callbacks were needed to make the window actually show stuff. So, in spirit of the <code>Scene</code> class from HW3, I created
+            another class called <code>RenderScene</code>. I added callbacks for the display, reshape, and keyboard functions so the window would show a blue image
+            and pressing <kbd>Q</kbd> would close the program. Since I will need to show a 3D model later on, I began recreating parts of HW2:
+            <ol>
+                <li>Added light shaders from HW2</li>
+                <li>Created an <code>initShader</code> method for <code>RenderScene</code> and called it in <code>main</code> to load the light shaders</li>
+                <li>Added a camera with the appropriate projection and modelview matrices using <code>glm</code></li>
+                <li>Created a <code>RevolutionSurface</code> class which for now just drew a cube</li>
+            </ol>
+            So, the second window would just draw a lit cube. The next step was to set up camera controls. I added the mouse and motion callback functions 
+            to rotate and move the camera about the origin.
+            </p>
+            <p>
+                Next, the actual curve needed to be created. The main idea was to create a parametrized surface by taking a position <code>(x,y)</code> from the 2D curve
+                and mapping it to points <code>(x * cos(&theta;), y, x * sin(&theta;))</code> where &theta; would range from 0 to 2&pi;. This required modification of the <code>Curve</code> class
+                to store the interpolated points since the class only stored the control points. So, a quick hack was done to have the <code>draw</code> method for the curves just store the interpolated points.
+            <p>
+                With access to the interpolated points, I could now actually set up vertices for the surface of revolution.
+                I added some code to the <code>RevolutionSurface</code> class to create vertices using the formula above.
+                Triangles were created from these vertices. For a fixed vertex, the vertex to the right and the vertices below the two
+                gave a quadrilateral. This quadrilateral could then be divided into two triangles.
+                To compute the normal vector for the surface, the cross product of the side vectors for triangles were used.
+                Then, the appropriate OpenGL buffers (VBO, EBO, NBO) and the VAO were setup using the points. Finally, the
+                surface could be drawn.
+            </p>
+        </section>
+    </div>
+</body>
+
+</html>
