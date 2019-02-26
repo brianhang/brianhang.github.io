@@ -81,3 +81,13 @@ figure {
     height: 360px;
     display: block;
 }
+
+.demo-vid {
+    text-align: center;
+}
+
+.demo-vid video {
+    display: inline-block;
+    max-width: 50%;
+    max-height: 256px;
+}
