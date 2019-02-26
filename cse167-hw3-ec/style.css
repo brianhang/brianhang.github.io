@@ -38,3 +38,46 @@ kbd {
     width: 16px;
     height: 16px;
 }
+
+#usage-vid {
+    max-width: 100%;
+}
+
+.shadowed {
+    box-shadow: 0px 2px 8px 0px #909090;
+}
+
+figure {
+    margin: 0px;
+}
+
+#examples {
+    white-space: nowrap;
+    width: 100%;
+    max-height: 360px;
+    overflow-y: hidden;
+    overflow-x: auto;
+    padding-bottom: 16px;
+}
+
+#examples figure {
+    display: inline-block;
+    height: 100%;
+    position: relative;
+}
+
+#examples figure figcaption {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    color: #ffffff;
+    display: block;
+    z-index: 10;
+    background-color: rgba(0, 0, 0, 0.67);
+    padding: 2px 4px 2px 4px;
+}
+
+#examples figure img {
+    height: 360px;
+    display: block;
+}
