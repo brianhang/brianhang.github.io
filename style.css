@@ -1,80 +1,57 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto+Slab:400,700');
-
 body {
-    font-family: 'Roboto Slab', serif;
-    background-color: #F6F6F6;
-    color: #263238;
+    background-color: #070808;
+    color: #f2f7f7;
+    font-family: "Raleway", sans-serif;
 }
 
-#content {
-    width: 60%;
-    max-width: 860px;
-    margin-top: 4em;
-    margin-bottom: 4em;
-    margin-left: auto;
-    margin-right: auto;
-    font-size: 1.1em;
+.content {
+    padding: 1em;
 }
 
-#content header {
-    font-size: 3em;
-    font-weight: 700;
-}
-
-#domain {
-    color: #2196F3;
-    font-weight: 400;
-}
-
-#content section {
-    text-align: justify;
-    padding-top: 2em;
-}
-
-#content section h1 {
-    color: #2196F3;
-    border-bottom: #d0d0d0 dashed thin;
-    background-color: #fdfdfd;
+h1 {
+    font-size: 8em;
+    font-weight: bolder;
     margin: 0;
-    padding: 4px;
 }
 
-#content a {
-    color: #2196F3;
+.info {
+    font-size: 2em;
+}
+
+.info a {
+    color: #f2f7f7;
     text-decoration: none;
 }
 
-#content p {
-    margin-top: 0em;
-    margin-bottom: 1.25em;
+.info a:hover {
+    background-color: #faffff;
+    color: #070808;
 }
 
-#intro {
-    margin-bottom: -1.25em;
-}
-
-#copyright {
-    font-size: 0.6em;
-    color: #b0b0b0;
-    text-align: center;
-}
-
-#projects {
-    margin-bottom: -1em;
-}
-
-#projectList {
+.info ul {
+    display: inline;
     list-style: none;
-    padding-left: 0;
-    margin-top: 0;
 }
 
-#projectList a {
-    font-weight: 700;
+.links {
+    display: inline;
+    list-style: none;
+    padding: 0px;
 }
 
-#projectList p {
-    margin: 0em;
-    margin-bottom: 1em;
-    font-size: 0.8em;
+.links li {
+    display: inline;
+}
+
+.links li:not(:last-child):after {
+    content: ", ";
+    color: white;
+}
+
+.links::before {
+    content: "{ ";
+}
+
+.links::after {
+    content: " }";
 }
